@@ -1,3 +1,16 @@
+<style>
+  .flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .flex-container>div {
+    width: 33%;
+    text-align: center;
+    font-size: 30px;
+  }
+</style>
+
 <ion-header>
   <ion-navbar>
     <ion-title>
@@ -7,32 +20,48 @@
 </ion-header>
 
 <ion-content padding>
-<div>
-  <div>  
-    <button ion-button outline icon-start>
-      <ion-icon name="mealCount-milk"></ion-icon>
-    </button>  
-  </div>
-  <div>  
+  <div>
+
+    <div class="flex-container">
+      <div>
+        <button ion-button outline icon-start (click)="incrementMilk()">
+          <ion-icon name="mealCount-milk"></ion-icon>
+        </button>
+      </div>
+      <div>
+        {{milkQuantity}}
+      </div>
+      <div>
+        2
+      </div>
+
+    </div>
+
+    <div>
       <button ion-button outline icon-start>
         <ion-icon name="mealCount-bread"></ion-icon>
-      </button>  
+      </button>
     </div>
-    <div>  
-        <button ion-button outline icon-start>
-          <ion-icon name="mealCount-oil"></ion-icon>
-        </button>  
-      </div>
-      <div>  
-          <button ion-button outline icon-start>
-            <ion-icon name="mealCount-apple"></ion-icon>
-          </button>  
-        </div>
-        <div>  
-            <button ion-button outline icon-start>
-              <ion-icon name="mealCount-broccoli"></ion-icon>
-            </button>  
-          </div>
-</div>
-     
+    <div>
+      <button ion-button outline icon-start>
+        <ion-icon name="mealCount-oil"></ion-icon>
+      </button>
+    </div>
+    <div>
+      <button ion-button outline icon-start>
+        <ion-icon name="mealCount-apple"></ion-icon>
+      </button>
+    </div>
+    <div>
+      <button ion-button outline icon-start>
+        <ion-icon name="mealCount-broccoli"></ion-icon>
+      </button>
+    </div>
+
+    <div>
+      <button ion-button outline icon-start (click)="clearAllMeal()">
+          <ion-icon name="mealCount-reload"></ion-icon>
+        </button>
+    </div>
+  </div>
 </ion-content>

@@ -44,4 +44,7 @@ ion-icon {
     &[class*="mealCount-oil"] {
         mask-image: url(../assets/imgs/oil.svg);
     }
+    &[class*="mealCount-reload"] {
+        mask-image: url(../assets/imgs/reload.svg);
+    }
 }
