@@ -24,6 +24,13 @@
 <ion-content padding>
   <div>
 
+      <ion-searchbar (ionInput)="getItems($event)" (ionCancel)="onCancel($event)"></ion-searchbar>
+      <ion-list>
+        <ion-item (click)="addQuantity(meal)" *ngFor="let meal of mealList">
+          <h2> {{ meal.name }} {{ meal.quantity }}</h2>
+        </ion-item>
+      </ion-list>
+
       <div class="flex-container">
           <button ion-button outline icon-start (click)="incrementProtein()">
             <ion-icon name="mealCount-meat"></ion-icon>
@@ -41,10 +48,10 @@
     </div>
 
     <div class="flex-container">
-      <button ion-button outline icon-start (click)="incrementBread()">
-        <ion-icon name="mealCount-bread"></ion-icon>
+      <button ion-button outline icon-start (click)="incrementCarb()">
+        <ion-icon name="mealCount-carb"></ion-icon>
       </button>
-      <div>{{breadQuantity}}</div>
+      <div>{{carbQuantity}}</div>
       <div> 4 </div>
     </div>
 
