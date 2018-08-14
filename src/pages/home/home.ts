@@ -16,6 +16,7 @@ export class HomePage {
   private fruitQuantity = 0;
   private vegetableQuantity = 0;
   private proteinQuantity = 0;
+  private portionUnit = 1;
 
   constructor(public navCtrl: NavController, private storage: Storage) {
     storage.get('milk').then((val) => {
@@ -44,32 +45,33 @@ export class HomePage {
   }
 
   private incrementMilk(quantity = 1){
-    this.milkQuantity += quantity;
+    this.milkQuantity += quantity * this.portionUnit;
     this.storage.set('milk', this.milkQuantity);
   }
 
   private incrementCarb(quantity = 1){
-    this.carbQuantity += quantity;
+    this.carbQuantity += quantity * this.portionUnit;
     this.storage.set('carb', this.carbQuantity);
   }
 
   private incrementOil(quantity = 1){
-    this.oilQuantity += quantity;
+    this.oilQuantity += quantity * this.portionUnit;
     this.storage.set('oil', this.oilQuantity);
   }
 
   private incrementFruit(quantity = 1){
-    this.fruitQuantity += quantity;
+    this.fruitQuantity += quantity * this.portionUnit;
     this.storage.set('fruit', this.fruitQuantity);
   }
 
   private incrementVegetable(quantity = 1){
-    this.vegetableQuantity += quantity;
+    this.vegetableQuantity += quantity * this.portionUnit;
     this.storage.set('vegetable', this.vegetableQuantity);
   }
 
   private incrementProtein(quantity = 1){
-    this.proteinQuantity += quantity;
+    console.log("incrementProtein " + quantity + " - " + this.portionUnit);
+    this.proteinQuantity += quantity * this.portionUnit;
     this.storage.set('protein', this.proteinQuantity);
   }
   private clearAllMeal(){
@@ -120,13 +122,16 @@ export class HomePage {
 
   public onCancel(searchbar){
     this.mealList = [];
-    console.log(">>>>>> Cancel");
+  }
+
+  public setPortionUnit(value = 1){
+    console.log("setPortionUnit: " + value);
+    this.portionUnit = value;
   }
 
   public getItems(searchbar) {
     this.initializeItems();
     var q = searchbar.srcElement.value;
-    console.log(">>>>>> getItems " + q);
 
     if (!q){ 
       this.mealList = [];
